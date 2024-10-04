@@ -13,7 +13,7 @@ const routes = [
     name: "ChatApp",
     component: ChatApp,
     beforeEnter: (to, from, next) => {
-      const selectedUser = localStorage.getItem("selectedUser");
+      const selectedUser = sessionStorage.getItem("selectedUser");
       if (selectedUser) {
         next();
       } else {

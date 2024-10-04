@@ -13,49 +13,24 @@
       </div>
     </div>
     <div class="body-container">
-      <div class="chat-list">
+      <div
+        v-for="user in filteredUsers"
+        :key="user.id"
+        class="chat-list"
+        @click="setActiveChat(user)"
+      >
         <div class="chat-box" id="Msg">
           <div class="chat-img">
-            <img src="@/assets/img/profile-1.png" alt="" />
+            <img :src="getUserImage(user.id)" alt="" />
           </div>
           <div class="chat-details">
             <div class="chat-title">
-              <h3>alex smith</h3>
+              <h3>{{ user.name }}</h3>
               <span>06:04 PM</span>
             </div>
             <div class="chat-msg">
-              <p>How to make website using html and css?</p>
+              <p>Sample message here</p>
               <span>1</span>
-            </div>
-          </div>
-        </div>
-        <div class="chat-box">
-          <div class="chat-img">
-            <img src="@/assets/img/profile-2.png" alt="" />
-          </div>
-          <div class="chat-details">
-            <div class="chat-title">
-              <h3>amelia</h3>
-              <span>05:04 PM</span>
-            </div>
-            <div class="chat-msg">
-              <p>How are you?</p>
-              <span>2</span>
-            </div>
-          </div>
-        </div>
-        <div class="chat-box">
-          <div class="chat-img">
-            <img src="@/assets/img/profile-3.png" alt="" />
-          </div>
-          <div class="chat-details">
-            <div class="chat-title">
-              <h3>diana</h3>
-              <span>04:04 PM</span>
-            </div>
-            <div class="chat-msg">
-              <p>How to make website?</p>
-              <span>3</span>
             </div>
           </div>
         </div>
@@ -67,6 +42,24 @@
   </aside>
 </template>
 
-<script setup></script>
+<script setup>
+import { computed } from "vue";
+import { useChatsStore } from "@/stores/store";
 
-<style lang="scss" scoped></style>
+const store = useChatsStore();
+
+const filteredUsers = computed(() => {
+  return store.users.filter((user) => user.id !== store.currentUser?.id);
+});
+
+const setActiveChat = (user) => {
+  store.setActiveChatUser(user);
+  store.loadChatMessages(user);
+};
+
+const getUserImage = (id) => {
+  if (id) {
+    return require(`@/assets/img/profile-${id}.png`);
+  }
+};
+</script>
