@@ -1,6 +1,6 @@
 <template>
   <section class="content">
-    <div class="container active" id="chatBox">
+    <div class="container" id="chatBox">
       <div class="content-header">
         <div class="image">
           <img src="@/assets/img/profile-1.png" alt="" />
@@ -16,8 +16,16 @@
         </div>
       </div>
       <div class="chat-container">
-        <div class="chat-msg">
-          <p>How to make website using html and css?</p>
+        <div
+          v-for="index in 1"
+          :key="index"
+          class="chat-msg"
+          :class="{
+            'my-message': index % 2 === 0,
+            'other-message': index % 2 !== 0,
+          }"
+        >
+          <p>How to make website using HTML and CSS?</p>
           <span class="time">06:04 PM</span>
         </div>
       </div>

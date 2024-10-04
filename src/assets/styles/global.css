@@ -355,24 +355,41 @@ main {
 }
 
 .content .container .chat-container {
+    height: 100vh;
+    bottom: 17rem;
     position: relative;
     max-width: 67rem;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .content .container .chat-msg {
-    position: absolute;
-    top: 1rem;
     background-color: var(--whiteColor);
     border-radius: 1rem;
     width: fit-content;
     padding: .5rem 1rem;
+    margin-top: 10px;
     display: flex;
     gap: 1rem;
+    position: relative; /* Добавлено для абсолютного позиционирования */
 }
 
-.content .container .chat-msg::before {
+.content .container .chat-msg.my-message {
+    margin-left: auto; /* Выравнивание сообщений вашего пользователя вправо */
+    background-color: var(--mainColor); /* Пример другого цвета фона для вашего сообщения */
+    color: var(--whiteColor); /* Цвет текста вашего сообщения */
+}
+
+.content .container .chat-msg.other-message {
+    margin-right: auto;
+}
+
+/* Остальные стили без изменений */
+
+
+.content .container .other-message::before {
     content: "";
     position: absolute;
     top: 0;
@@ -381,19 +398,34 @@ main {
     border-top: 1rem solid var(--whiteColor);
 }
 
+.content .container .my-message::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1rem;
+    border: 1rem solid transparent;
+    border-top: 1rem solid var(--mainColor);
+}
+
 .content .container .chat-msg p {
     font-size: 1.6rem;
 }
 
-.content .container .chat-msg .time {
+.content .container .other-message .time {
     font-size: 1.2rem;
     margin-top: 1rem;
     color: var(--grayColor);
 }
 
+.content .container .my-message .time {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: var(--whiteColor);
+}
+
 .content .container .message-box {
     position: absolute;
-    bottom: 2rem;
+    bottom: 9rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
