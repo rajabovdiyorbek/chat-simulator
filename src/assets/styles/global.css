@@ -152,6 +152,7 @@ main {
 }
 
 .right-side .body-container .chat-list {
+    width: 40rem;
     display: flex;
     flex-direction: column;
 }
@@ -251,7 +252,7 @@ main {
 
 .right-side .pen {
     position: absolute;
-    bottom: 2rem;
+    bottom: 11rem;
     right: 2rem;
     width: 5rem;
     height: 5rem;
@@ -264,7 +265,6 @@ main {
     font-size: 1.8rem;
     cursor: pointer;
 }
-
 /*End Aside Section*/
 /*Start Content Section*/
 .content {
@@ -355,14 +355,17 @@ main {
 }
 
 .content .container .chat-container {
-    height: 100vh;
-    bottom: 17rem;
+    height: calc(100vh - 17rem);
+    bottom: 0rem;
     position: relative;
     max-width: 67rem;
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto; 
+    padding: 1rem;
 }
 
 .content .container .chat-msg {
@@ -370,38 +373,37 @@ main {
     border-radius: 1rem;
     width: fit-content;
     padding: .5rem 1rem;
-    margin-top: 10px;
+    margin: .5rem; 
     display: flex;
     gap: 1rem;
-    position: relative; /* Добавлено для абсолютного позиционирования */
+    position: relative; 
 }
 
 .content .container .chat-msg.my-message {
-    margin-left: auto; /* Выравнивание сообщений вашего пользователя вправо */
-    background-color: var(--mainColor); /* Пример другого цвета фона для вашего сообщения */
-    color: var(--whiteColor); /* Цвет текста вашего сообщения */
+    margin-left: auto;
+    background-color: var(--mainColor); 
+    color: var(--whiteColor); 
 }
 
 .content .container .chat-msg.other-message {
     margin-right: auto;
+    background-color: var(--whiteColor); 
+    color: var(--blackColor); 
 }
 
-/* Остальные стили без изменений */
-
-
-.content .container .other-message::before {
+.content .container .chat-msg::before {
     content: "";
     position: absolute;
     top: 0;
-    left: -1rem;
+}
+
+.content .container .chat-msg.other-message::before {
+    left: -1rem; 
     border: 1rem solid transparent;
     border-top: 1rem solid var(--whiteColor);
 }
 
-.content .container .my-message::before {
-    content: "";
-    position: absolute;
-    top: 0;
+.content .container .chat-msg.my-message::before {
     right: -1rem;
     border: 1rem solid transparent;
     border-top: 1rem solid var(--mainColor);
@@ -411,21 +413,21 @@ main {
     font-size: 1.6rem;
 }
 
-.content .container .other-message .time {
+.content .container .chat-msg .time {
     font-size: 1.2rem;
     margin-top: 1rem;
     color: var(--grayColor);
 }
-
 .content .container .my-message .time {
     font-size: 1.2rem;
     margin-top: 1rem;
     color: var(--whiteColor);
 }
 
+
 .content .container .message-box {
     position: absolute;
-    bottom: 9rem;
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -486,3 +488,5 @@ main {
     justify-content: center;
     cursor: pointer;
 }
+
+/*End Content Section*/
