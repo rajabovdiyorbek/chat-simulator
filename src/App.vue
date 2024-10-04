@@ -1,12 +1,9 @@
 <template>
-  <div>
-    <p>Counter: {{ store.counter }}</p>
-    <button @click="store.increment">Increment</button>
-  </div>
+  <main>
+    <RideSide />
+  </main>
 </template>
 
 <script setup>
-import { useMainStore } from "./stores/store";
-
-const store = useMainStore();
+import RideSide from "./components/RideSide.vue";
 </script>
