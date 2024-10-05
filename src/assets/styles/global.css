@@ -365,10 +365,13 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto; 
+    overflow-x: hidden;
     padding: 1rem;
 }
 
 .content .container .chat-msg {
+    word-wrap: break-word;
+    max-width: 300px;
     background-color: var(--whiteColor);
     border-radius: 1rem;
     width: fit-content;
@@ -410,6 +413,8 @@ main {
 }
 
 .content .container .chat-msg p {
+    word-wrap: break-word;
+    max-width: 228px;
     font-size: 1.6rem;
 }
 
