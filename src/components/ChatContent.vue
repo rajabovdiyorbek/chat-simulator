@@ -79,6 +79,11 @@ watch(
   () => {
     nextTick(() => {
       scrollToBottom();
+      window.addEventListener("storage", function (event) {
+        if (["chat_1_2", "chat_1_3", "chat_2_3"].includes(event.key)) {
+          store.initializeChats();
+        }
+      });
     });
   }
 );
