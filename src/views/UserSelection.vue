@@ -6,8 +6,10 @@
         v-for="user in store.users"
         :key="user.id"
         @click="selectUser(user.id)"
+        class="user-item"
       >
-        {{ user.name }}
+        <img class="user-image" :src="getUserImage(user.id)" alt="" />
+        <span class="user-name">{{ user.name }}</span>
       </li>
     </ul>
   </div>
@@ -24,27 +26,12 @@ const selectUser = (id) => {
   sessionStorage.setItem("selectedUser", id);
   router.push("/chat");
 };
+
+const getUserImage = (id) => {
+  if (id) {
+    return require(`@/assets/img/profile-${id}.png`);
+  }
+};
 </script>
 
-<style scoped>
-.user-selection {
-  text-align: center;
-  padding: 20px;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  cursor: pointer;
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin: 10px 0;
-}
-
-li:hover {
-  background-color: #f0f0f0;
-}
-</style>
+<style scoped></style>

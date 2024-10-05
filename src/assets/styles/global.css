@@ -490,3 +490,49 @@ main {
 }
 
 /*End Content Section*/
+
+/* UserSelection */
+.user-selection {
+  text-align: center;
+  padding: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.user-item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  max-width: 150px;
+}
+
+.user-item:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.user-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.user-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
